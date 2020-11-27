@@ -3,6 +3,11 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
+export interface UrlResponse {
+  short_id: string;
+  long_url: string;
+}
+
 const endpoint = 'https://api.gmendozas.com/';
 const httpOptions = {
   headers: new HttpHeaders({

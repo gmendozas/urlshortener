@@ -4,22 +4,20 @@
     <br/>
     <form id="submit">
         <div id="url-group" class="form-group">
-            <input type="url" required class="form-control" name="url" placeholder="Paste here the long URL here" id="url_input">
+            <input [(ngModel)]="urlRequest.long_url" type="url" required class="form-control" name="url" placeholder="Paste here the long URL here" id="url_input">
             <div class="help-block" style="display: none" id="url-error"></div>
         </div>
-        <button type="submit" class="genric-btn success circle" id="url_input_submit">Shorten</button>
-        <a href="../api.html" class="genric-btn success circle" id="back_input_submit">Back</a>
+        <button (click)="shortUrl()" class="genric-btn success circle" id="url_input_submit">Shorten</button>
 
     </form>
     <form id="result" style="display: none">
         <div class="alert alert-success">Successfully shortened: <br/><span id="long_url"></span></div>
         <div class="form-group">
             <label for="name">You can now copy/paste the short URL</label>
-            <input type="text" class="form-control" name="url" readonly="readonly" id="short_id">
+            <input value="{{response?.short_id}}" type="text" class="form-control" name="url" readonly="readonly" id="short_id">
         </div>
         <div>
-            <button type="submit" class="genric-btn success circle" id="page_reload">New URL</button>
-            <a href="../api.html" class="genric-btn success circle" id="back_input_submit">Back</a>
+            <button (click)="reset()" type="submit" class="genric-btn success circle" id="page_reload">New URL</button>
         </div>
     </form>
 
