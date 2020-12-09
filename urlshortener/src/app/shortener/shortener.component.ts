@@ -23,9 +23,8 @@ export class ShortenerComponent implements OnInit {
     this.urlRequest.cdn_prefix = window.location.hostname
     this.rest.createShortUrl(this.urlRequest).subscribe((result: UrlResponse) => {
       this.response = result;
-      document.getElementById("submit")?.setAttribute("style", "display: none")
-      document.getElementById("result")?.removeAttribute("style")
-      console.log(result)
+      document.getElementById("url-form")?.setAttribute("style", "display: none")
+      document.getElementById("result-form")?.removeAttribute("style")
     }, (err) => {
       console.log(err);
     });
@@ -35,7 +34,26 @@ export class ShortenerComponent implements OnInit {
     this.response.long_url = ""
     this.response.short_id = ""
     this.urlRequest.long_url = ""
-    document.getElementById("result")?.setAttribute("style", "display: none")
-    document.getElementById("submit")?.removeAttribute("style")
+    document.getElementById("result-form")?.setAttribute("style", "display: none")
+    document.getElementById("url-form")?.removeAttribute("style")
+  }
+
+  goHome() {
+    this.router.navigateByUrl('/');
+  }
+
+  copyUrl(){
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = this.response.short_id;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    alert("URL copied");
   }
 }

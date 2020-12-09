@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ShortenerComponent } from './shortener/shortener.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShortenerComponent
+    ShortenerComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
